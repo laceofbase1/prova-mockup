@@ -46,7 +46,7 @@
   /* ── scoped reset + tokens ── */
   #prova{
     --paper:#F5F2EB; --paper-deep:#ECE7DC; --surface:#FFFFFF;
-    --ink:#1F1B17; --ink-soft:#3A352D; --ink-mute:#6B655B; --ink-faint:#A39C90;
+    --ink:#1F1B17; --ink-soft:#3A352D; --ink-mute:#6B655B; --ink-faint:#857B6C;
     --sage:#8A9D7A; --sage-dark:#6B7E5C; --sage-soft:#D6DFCB; --sage-ghost:#E8EDDF;
     --hair:#E2DCCE;
     --clay:#B27554; --clay-deep:#2A201A; --clay-soft:#E7D3C5; --glow:rgba(178,117,84,.32);
@@ -262,6 +262,27 @@
   #prova .rkeeptxt{ font-size:12.5px; line-height:1.4; color:var(--ink); }
   #prova .rkeeptxt em{ font-family:var(--serif); font-size:13.5px; color:var(--sage-dark); }
 
+  /* ── focus-visible (keyboard a11y) ── */
+  #prova a:focus-visible, #prova .btn-primary:focus-visible, #prova .betainput:focus-visible{ outline:2px solid var(--sage-dark); outline-offset:3px; border-radius:6px; }
+  #prova .navcta:focus-visible, #prova .padd span:focus-visible{ outline-offset:2px; }
+
+  /* ── PERSONALITY — the quiet engine ── */
+  #prova .enginegrid{ display:grid; grid-template-columns:.92fr 1.08fr; gap:52px; align-items:center; margin-top:42px; }
+  @media(max-width:880px){ #prova .enginegrid{ grid-template-columns:1fr; gap:34px; } }
+  #prova .enginecopy .englede{ font-size:16px; color:var(--ink-mute); line-height:1.6; max-width:430px; }
+  #prova .chiplab{ font-family:var(--mono); font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--ink-faint); margin:26px 0 13px; }
+  #prova .chips{ display:flex; flex-wrap:wrap; gap:9px; }
+  #prova .chip{ font-family:var(--mono); font-size:10.5px; letter-spacing:.4px; color:var(--sage-dark); background:var(--sage-ghost); border:1px solid var(--sage-soft); border-radius:999px; padding:7px 13px; }
+  #prova .chipnote{ font-size:12.5px; font-style:italic; font-family:var(--serif); color:var(--ink-faint); margin-top:15px; }
+  #prova .enginehead{ font-family:var(--mono); font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--clay); margin-bottom:16px; }
+  #prova .eout{ position:relative; background:var(--surface); border:1px solid var(--hair); border-radius:16px; padding:15px 17px; margin-bottom:11px; box-shadow:0 1px 2px rgba(31,27,23,.04),0 8px 18px rgba(31,27,23,.05); transition:transform .25s,box-shadow .25s; }
+  #prova .eout:hover{ transform:translateY(-3px); box-shadow:0 2px 4px rgba(31,27,23,.05),0 16px 30px rgba(31,27,23,.08); }
+  #prova .eouthead{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px; }
+  #prova .eoutlab{ font-family:var(--serif); font-size:17px; font-weight:500; color:var(--ink); }
+  #prova .eouttune{ font-family:var(--mono); font-size:8px; letter-spacing:1.4px; text-transform:uppercase; color:var(--clay); white-space:nowrap; }
+  #prova .eouttxt{ font-size:13px; line-height:1.5; color:var(--ink-mute); }
+  #prova .eouttxt em{ font-family:var(--serif); font-style:italic; color:var(--sage-dark); }
+
   /* reduced motion */
   @media(prefers-reduced-motion:reduce){
     #prova .phone{ animation:none; }
@@ -323,7 +344,6 @@
   <!-- THESIS -->
   <section class="thesis">
     <div class="wrap">
-      <div class="lab rv">The idea</div>
       <h2 class="rv d1">Motivation fades. <b>Evidence doesn't.</b> Prova is where you collect the small, daily proof that you're already becoming the person you said you'd be.</h2>
     </div>
   </section>
@@ -417,30 +437,60 @@
     </div>
   </section>
 
+  <!-- PERSONALITY ENGINE -->
+  <section class="std wrap" id="personality">
+    <div class="enginecopy">
+      <div class="seclabel rv">The quiet engine</div>
+      <h2 class="sectitle rv d1">It learns how to sound like <em>you</em>.</h2>
+    </div>
+    <div class="enginegrid">
+      <div class="enginecopy">
+        <p class="englede rv d1">Tell Prova how you're wired. It uses that to shape every word it writes back, so the encouragement never sounds like a generic app. It sounds like someone who actually knows you.</p>
+        <div class="chiplab rv d1">What you bring</div>
+        <div class="chips rv d2">
+          <span class="chip">Enneagram</span>
+          <span class="chip">MBTI</span>
+          <span class="chip">Love languages</span>
+          <span class="chip">CliftonStrengths</span>
+          <span class="chip">Human Design</span>
+          <span class="chip">DISC</span>
+        </div>
+        <p class="chipnote rv d2">Optional, always. Share as much or as little as you like.</p>
+      </div>
+      <div>
+        <div class="enginehead rv d1">What it shapes</div>
+        <div class="eout rv d1">
+          <div class="eouthead"><span class="eoutlab">Letter to Yourself</span><span class="eouttune">Tuned to you</span></div>
+          <div class="eouttxt">Past-you's voice for the hard days, in the words that actually <em>reach</em> you. It gets wiser the more proof you gather.</div>
+        </div>
+        <div class="eout rv d2">
+          <div class="eouthead"><span class="eoutlab">A daily nudge</span><span class="eouttune">Tuned to you</span></div>
+          <div class="eouttxt">One small push each morning, framed for how you're wired and how you've been <em>showing up</em>.</div>
+        </div>
+        <div class="eout rv d3">
+          <div class="eouthead"><span class="eoutlab">The Mirror</span><span class="eouttune">Tuned to you</span></div>
+          <div class="eouttxt">When you Reflect, it answers in a register that lands, because it knows what <em>moves</em> you.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- FEATURES -->
   <section class="std wrap" id="features">
-    <div class="seclabel rv">What's inside</div>
+    <div class="seclabel rv">The rest of it</div>
     <h2 class="sectitle rv d1">A quiet, finished space for the work of <em>becoming</em>.</h2>
     <div class="fgrid">
       <div class="fcard rv d1">
         <div class="ficon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9h16M9 9v11"/></svg></div>
         <h3>The Proof Wall</h3><p>Every entry stacks against your goal. Star the ones that hit hardest. Your case for yourself, growing daily.</p>
       </div>
-      <div class="fcard rv d3">
-        <div class="ficon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 3h12l-1 7-5 4-5-4z"/><path d="M9 21h6"/></svg></div>
-        <h3>Doubt Mode</h3><p>The dark mode you'll actually use. One tap pulls up your evidence when self-doubt hits the loudest.</p>
+      <div class="fcard rv d2">
+        <div class="ficon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1M3 4.2v3.6h3.6"/><path d="M12 7.5V12l3 1.8"/></svg></div>
+        <h3>Past Proof</h3><p>The wins from before Prova still count. Seed your wall with everything you already survived and built.</p>
       </div>
-      <div class="fcard rv d1">
+      <div class="fcard rv d3">
         <div class="ficon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="3.2"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/></svg></div>
         <h3>The Circle</h3><p>You're not doing it alone. See others quietly becoming, and cheer each other on. Anonymous, always in your corner.</p>
-      </div>
-      <div class="fcard rv d2">
-        <div class="ficon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s7-5.5 7-11a7 7 0 10-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
-        <h3>A daily nudge</h3><p>A daily voice that sounds like yours, tuned to your goal and how you're showing up. Encouragement that's earned.</p>
-      </div>
-      <div class="fcard rv d3">
-        <div class="ficon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19h16M7 16l3-8 4 6 2-4"/></svg></div>
-        <h3>Letter to Yourself</h3><p>Past-you's voice for when doubt hits. It gets wiser the more you show up, drawing on your best proof.</p>
       </div>
     </div>
   </section>
@@ -450,7 +500,7 @@
     <div class="wrap">
       <div class="lab rv">The beta is open</div>
       <h2 class="rv d1">You are still <em>becoming</em>.</h2>
-      <p class="sub rv d1">Start collecting the proof.</p>
+      <p class="sub rv d1">The iOS beta is open. Your first proof takes about sixty seconds.</p>
 
       <div class="betabox rv d2">
         <!-- ============================================================
@@ -463,7 +513,7 @@
           <input class="betainput" type="email" placeholder="you@email.com" aria-label="Email address">
           <a href="#beta" class="btn-primary">Join the beta <span class="arr">&rarr;</span></a>
         </div>
-        <div class="betanote">Joining the iOS TestFlight beta</div>
+        <div class="betanote">iOS TestFlight now &middot; on Android? Join the list</div>
       </div>
 
       <div class="meta rv d2">TestFlight &middot; iOS &middot; coming to the App Store</div>
