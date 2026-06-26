@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<!--
+  Prova — marketing landing (GoHighLevel-ready)
+  ============================================================================
+  HOW TO USE IN GHL (full-page custom code):
+    1. Create a BLANK funnel/website page in GHL.
+    2. Add ONE full-width "Custom Code / HTML" element (or use the page's
+       custom-code area).
+    3. Copy everything between the two big "COPY FROM HERE" / "COPY TO HERE"
+       markers below (the <style>, the #prova block, and the <script>) and
+       paste it into that element.
+    4. The beta CTA has a marked slot near the bottom — paste your GHL form
+       embed there so leads flow into your CRM (search: "GHL FORM EMBED").
+    5. Footer links point to /privacy and /terms — set those GHL pages to
+       those paths, or update the two hrefs to your real GHL page URLs.
+
+  WHY IT'S BUILT THIS WAY: every style is scoped under #prova and there's a
+  GHL container-neutralizer at the top of the <style> so GHL's section / row /
+  column borders + padding can't wrap or frame this page (the "borders" issue).
+  ============================================================================
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prova — Proof of who you are becoming</title>
+<meta name="description" content="The journal that proves you're moving. Name a goal, add one small proof a day, and read it back when doubt hits.">
+</head>
+<body>
+
+<!-- ===================== COPY FROM HERE FOR GHL ===================== -->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Gambetta:ital,wght@0,400;0,500;1,400&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  /* ── GHL container-neutralizer ──────────────────────────────────────────
+     On the dedicated page that holds this code, cancel the framing GHL adds
+     to its section / row / column wrappers so nothing borders, shadows, or
+     insets our full-bleed design. Safe because this page holds only Prova.
+     If a wrapper still constrains width, add its class here. */
+  .c-section, .c-row, .c-column, .c-wrapper, .c-row-content,
+  .row, .col, [class*="hl_page-preview"] .row, [class*="c-column"]{
+    border:0 !important; box-shadow:none !important; background:transparent !important;
+    max-width:none !important; padding-left:0 !important; padding-right:0 !important;
+  }
+
+  /* ── scoped reset + tokens ── */
+  #prova{
+    --paper:#F5F2EB; --paper-deep:#ECE7DC; --surface:#FFFFFF;
+    --ink:#1F1B17; --ink-soft:#3A352D; --ink-mute:#6B655B; --ink-faint:#A39C90;
+    --sage:#8A9D7A; --sage-dark:#6B7E5C; --sage-soft:#D6DFCB; --sage-ghost:#E8EDDF;
+    --hair:#E2DCCE;
+    --clay:#B27554; --clay-deep:#2A201A; --clay-soft:#E7D3C5; --glow:rgba(178,117,84,.32);
+    --doubt:#1F1B17;
+    --serif:'Gambetta',serif; --sans:'Geist',system-ui,sans-serif; --mono:'JetBrains Mono',monospace;
+    background:var(--paper); color:var(--ink); font-family:var(--sans); line-height:1.55;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden; width:100%; margin:0; padding:0;
+  }
+  #prova *{ box-sizing:border-box; margin:0; padding:0; }
+  #prova a{ color:inherit; text-decoration:none; }
+  #prova em{ font-style:italic; font-family:var(--serif); color:var(--sage-dark); font-weight:400; }
+  #prova .wrap{ max-width:1120px; margin:0 auto; padding:0 30px; }
+  #prova img{ max-width:100%; }
+
+  /* reveal-on-scroll */
+  #prova .rv{ opacity:0; transform:translateY(22px); transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1); }
+  #prova .rv.in{ opacity:1; transform:none; }
+  #prova .rv.d1{ transition-delay:.08s; } #prova .rv.d2{ transition-delay:.16s; } #prova .rv.d3{ transition-delay:.24s; }
+
+  /* ── NAV ── */
+  #prova nav{ position:sticky; top:0; z-index:50; background:rgba(245,242,235,.85); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid var(--hair); }
+  #prova .navrow{ display:flex; align-items:center; justify-content:space-between; height:66px; }
+  #prova .brand{ font-family:var(--serif); font-size:24px; font-weight:500; letter-spacing:.5px; }
+  #prova .brand .dot{ color:var(--sage-dark); }
+  #prova .navlinks{ display:flex; align-items:center; gap:32px; }
+  #prova .navlinks a{ font-size:13.5px; color:var(--ink-mute); transition:color .2s; }
+  #prova .navlinks a:hover{ color:var(--ink); }
+  #prova .navcta{ font-weight:600; color:var(--paper); background:var(--sage); border-radius:12px; padding:10px 17px; box-shadow:0 2px 5px rgba(106,126,92,.25),0 8px 16px rgba(106,126,92,.18); }
+  @media(max-width:760px){ #prova .navlinks a:not(.navcta){ display:none; } }
+
+  /* ── HERO ── */
+  #prova .hero{ position:relative; padding:64px 0 30px; }
+  #prova .heromark{ font-family:var(--mono); font-size:11px; letter-spacing:4px; text-transform:uppercase; color:var(--clay); display:flex; align-items:center; gap:14px; margin-bottom:30px; }
+  #prova .heromark span{ flex:0; white-space:nowrap; }
+  #prova .heromark .rule{ flex:1; height:1px; background:var(--hair); }
+  #prova .herogrid{ display:grid; grid-template-columns:1.1fr .9fr; gap:40px; align-items:center; }
+  @media(max-width:880px){ #prova .herogrid{ grid-template-columns:1fr; gap:34px; } }
+  #prova h1{ font-family:var(--serif); font-size:74px; line-height:1.02; font-weight:500; letter-spacing:-1px; margin-bottom:24px; }
+  @media(max-width:880px){ #prova h1{ font-size:48px; } }
+  #prova .herosub{ font-size:19px; line-height:1.5; color:var(--ink-soft); max-width:470px; margin-bottom:16px; }
+  #prova .heroanchor{ display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--sage-dark); background:var(--sage-ghost); border:1px solid var(--sage-soft); border-radius:9px; padding:7px 12px; margin-bottom:30px; }
+  #prova .heroactions{ display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+  #prova .btn-primary{ font-size:15px; font-weight:600; color:var(--paper); background:var(--sage); border-radius:14px; padding:15px 26px; display:inline-flex; align-items:center; gap:9px; box-shadow:0 2px 6px rgba(106,126,92,.28),0 14px 26px rgba(106,126,92,.22); transition:transform .2s,box-shadow .2s; cursor:pointer; }
+  #prova .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 4px 10px rgba(106,126,92,.30),0 20px 34px rgba(106,126,92,.26); }
+  #prova .btn-primary .arr{ font-family:var(--serif); font-size:18px; }
+  #prova .btn-ghost{ font-size:14px; font-weight:500; color:var(--ink-mute); padding:15px 6px; }
+  #prova .btn-ghost:hover{ color:var(--ink); }
+
+  #prova .phonewrap{ display:flex; justify-content:center; position:relative; }
+  #prova .phoneglow{ position:absolute; inset:-14% -10%; background:radial-gradient(58% 48% at 60% 32%, var(--glow), transparent 70%); pointer-events:none; }
+  #prova .phone{ width:286px; background:var(--paper); border-radius:40px; padding:10px; border:1px solid rgba(0,0,0,.04); position:relative; box-shadow:0 36px 80px rgba(40,33,26,.30),0 8px 22px rgba(40,33,26,.16); animation:prova-float 7s ease-in-out infinite; }
+  @keyframes prova-float{ 0%,100%{ transform:translateY(0) rotate(-.4deg); } 50%{ transform:translateY(-14px) rotate(.4deg); } }
+  #prova .phonescreen{ background:var(--paper); border-radius:31px; overflow:hidden; padding:22px 16px; }
+  #prova .pgreet{ font-family:var(--mono); font-size:8.5px; letter-spacing:2px; text-transform:uppercase; color:var(--ink-mute); margin-bottom:6px; }
+  #prova .phi{ font-family:var(--serif); font-size:22px; font-weight:500; margin-bottom:15px; }
+  #prova .pcard{ background:var(--surface); border:1px solid var(--hair); border-radius:16px; padding:13px; margin-bottom:11px; box-shadow:0 1px 2px rgba(31,27,23,.04),0 8px 18px rgba(31,27,23,.06); }
+  #prova .plab{ font-family:var(--mono); font-size:8px; letter-spacing:1.6px; text-transform:uppercase; color:var(--clay); margin-bottom:8px; }
+  #prova .pgoal{ font-family:var(--serif); font-size:16px; font-weight:500; margin-bottom:9px; }
+  #prova .pprompt{ font-size:12px; color:var(--ink-faint); padding-bottom:10px; border-bottom:1px solid var(--hair); }
+  #prova .padd{ margin-top:10px; display:flex; justify-content:flex-end; }
+  #prova .padd span{ font-size:11px; font-weight:600; color:var(--paper); background:var(--sage); border-radius:10px; padding:7px 12px; }
+  #prova .pdoubt{ background:var(--doubt); border-radius:16px; padding:14px; box-shadow:0 10px 24px rgba(31,27,23,.22); }
+  #prova .pdoubt .de{ font-family:var(--mono); font-size:8px; letter-spacing:2px; text-transform:uppercase; color:var(--sage-soft); margin-bottom:7px; }
+  #prova .pdoubt .dt{ font-family:var(--serif); font-size:16px; font-weight:500; color:var(--paper); }
+  #prova .pdoubt .dt em{ color:var(--sage-soft); }
+  #prova .scrollcue{ margin-top:40px; font-family:var(--mono); font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--ink-faint); display:flex; align-items:center; gap:9px; }
+  #prova .scrollcue .ln{ width:30px; height:1px; background:var(--ink-faint); }
+
+  /* ── THESIS ── */
+  #prova .thesis{ padding:96px 0; text-align:center; }
+  #prova .thesis .lab{ font-family:var(--mono); font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--sage-dark); margin-bottom:24px; }
+  #prova .thesis h2{ font-family:var(--serif); font-size:46px; line-height:1.22; font-weight:400; max-width:820px; margin:0 auto; color:var(--ink-soft); }
+  @media(max-width:880px){ #prova .thesis h2{ font-size:30px; } }
+  #prova .thesis h2 b{ color:var(--ink); font-weight:500; }
+
+  /* ── PROOF SHOWCASE ── */
+  #prova .showcase{ background:var(--paper-deep); padding:84px 0; border-top:1px solid var(--hair); border-bottom:1px solid var(--hair); }
+  #prova .seclabel{ font-family:var(--mono); font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--sage-dark); margin-bottom:18px; }
+  #prova .sectitle{ font-family:var(--serif); font-size:40px; line-height:1.12; font-weight:500; letter-spacing:-.3px; max-width:660px; }
+  @media(max-width:880px){ #prova .sectitle{ font-size:30px; } }
+  #prova .showgrid{ display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; margin-top:42px; }
+  @media(max-width:880px){ #prova .showgrid{ grid-template-columns:1fr; } }
+  #prova .showcap{ font-size:16px; color:var(--ink-mute); line-height:1.6; max-width:420px; margin-bottom:22px; }
+  #prova .stat{ display:flex; align-items:baseline; gap:10px; }
+  #prova .statnum{ font-family:var(--serif); font-size:46px; font-weight:500; color:var(--sage-dark); line-height:1; }
+  #prova .statunit{ font-family:var(--serif); font-size:18px; font-style:italic; color:var(--ink-soft); }
+  #prova .statcap{ font-size:13px; color:var(--ink-mute); margin-top:6px; }
+  #prova .proofstack{ display:flex; flex-direction:column; gap:13px; }
+  #prova .proof{ background:var(--surface); border:1px solid var(--hair); border-radius:16px; padding:16px 18px; box-shadow:0 1px 2px rgba(31,27,23,.04),0 8px 18px rgba(31,27,23,.05); transition:transform .25s,box-shadow .25s; }
+  #prova .proof:hover{ transform:translateY(-3px); box-shadow:0 2px 4px rgba(31,27,23,.05),0 16px 30px rgba(31,27,23,.08); }
+  #prova .pdate{ font-family:var(--mono); font-size:9px; letter-spacing:1.4px; text-transform:uppercase; color:var(--ink-faint); margin-bottom:7px; }
+  #prova .ptxt{ font-size:14.5px; line-height:1.5; color:var(--ink); }
+  #prova .ptxt em{ font-size:16px; }
+
+  /* ── SECTIONS ── */
+  #prova section.std{ padding:84px 0; }
+  #prova .beats{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:42px; }
+  @media(max-width:880px){ #prova .beats{ grid-template-columns:1fr; } }
+  #prova .beat{ background:var(--surface); border:1px solid var(--hair); border-radius:20px; padding:28px 24px; box-shadow:0 1px 2px rgba(31,27,23,.04),0 12px 28px rgba(31,27,23,.06); transition:transform .25s,box-shadow .25s; }
+  #prova .beat:hover{ transform:translateY(-4px); box-shadow:0 2px 4px rgba(31,27,23,.05),0 22px 40px rgba(31,27,23,.09); }
+  #prova .beatnum{ font-family:var(--mono); font-size:11px; letter-spacing:2px; color:var(--clay); margin-bottom:14px; }
+  #prova .beat h3{ font-family:var(--serif); font-size:22px; font-weight:500; margin-bottom:8px; }
+  #prova .beat p{ font-size:14px; color:var(--ink-mute); }
+  #prova .ritualcap{ font-family:var(--serif); font-size:19px; font-style:italic; color:var(--ink-mute); text-align:center; margin-top:36px; }
+
+  /* ── DOUBT ── */
+  #prova .doubtsec{ background:var(--doubt); color:var(--paper); border-radius:34px; margin:34px 30px; padding:96px 40px; position:relative; overflow:hidden; }
+  @media(max-width:880px){ #prova .doubtsec{ margin:22px 16px; padding:60px 26px; border-radius:24px; } }
+  #prova .doubtsec::before{ content:""; position:absolute; inset:0; background:radial-gradient(80% 70% at 85% 8%, rgba(178,117,84,.36), transparent 55%),radial-gradient(70% 60% at 8% 100%, rgba(138,157,122,.18), transparent 55%); pointer-events:none; }
+  #prova .doubtinner{ position:relative; max-width:840px; margin:0 auto; text-align:center; }
+  #prova .doubtsec .seclabel{ color:var(--clay-soft); }
+  #prova .doubtsec h2{ font-family:var(--serif); font-size:52px; line-height:1.1; font-weight:500; margin-bottom:24px; }
+  @media(max-width:880px){ #prova .doubtsec h2{ font-size:32px; } }
+  #prova .doubtsec h2 em{ color:#E3D9A0; }
+  #prova .doubtsec p{ font-size:17px; color:#C7C0B4; max-width:540px; margin:0 auto; }
+
+  /* ── FEATURES ── */
+  #prova .fgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:42px; }
+  @media(max-width:880px){ #prova .fgrid{ grid-template-columns:1fr; } }
+  #prova .fcard{ background:var(--surface); border:1px solid var(--hair); border-radius:20px; padding:28px 24px; box-shadow:0 1px 2px rgba(31,27,23,.04),0 10px 24px rgba(31,27,23,.055); transition:transform .25s,box-shadow .25s; }
+  #prova .fcard:hover{ transform:translateY(-4px); box-shadow:0 2px 4px rgba(31,27,23,.05),0 22px 40px rgba(31,27,23,.09); }
+  #prova .fcard.feat{ background:var(--paper-deep); border-color:var(--clay-soft); }
+  #prova .ficon{ width:44px; height:44px; border-radius:13px; background:var(--sage-ghost); display:flex; align-items:center; justify-content:center; color:var(--sage-dark); margin-bottom:18px; }
+  #prova .fcard.clay .ficon{ background:var(--clay-soft); color:var(--clay); }
+  #prova .fcard h3{ font-family:var(--serif); font-size:22px; font-weight:500; margin-bottom:8px; }
+  #prova .fcard h3 .new{ font-family:var(--mono); font-size:8px; letter-spacing:1.4px; color:var(--sage-dark); background:var(--sage-ghost); border:1px solid var(--sage-soft); border-radius:6px; padding:2px 6px; vertical-align:middle; margin-left:8px; }
+  #prova .fcard p{ font-size:14px; color:var(--ink-mute); }
+  #prova .fcard .hook{ font-family:var(--serif); font-style:italic; font-size:14.5px; color:var(--sage-dark); margin-top:12px; }
+
+  /* ── CLOSING + BETA ── */
+  #prova .closing{ text-align:center; padding:120px 0 100px; position:relative; overflow:hidden; }
+  #prova .closing::before{ content:""; position:absolute; inset:0; background:radial-gradient(50% 60% at 50% 35%, var(--glow), transparent 65%); pointer-events:none; opacity:.6; }
+  #prova .closing .lab{ position:relative; font-family:var(--mono); font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--clay); margin-bottom:22px; }
+  #prova .closing h2{ position:relative; font-family:var(--serif); font-size:60px; font-weight:500; letter-spacing:-.4px; margin-bottom:14px; }
+  @media(max-width:880px){ #prova .closing h2{ font-size:38px; } }
+  #prova .closing h2 em{ color:var(--sage-dark); }
+  #prova .closing .sub{ position:relative; font-size:16px; color:var(--ink-mute); margin-bottom:30px; }
+  #prova .closing .meta{ position:relative; font-family:var(--mono); font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--ink-faint); margin-top:18px; }
+
+  /* beta form card — holds your GHL form embed */
+  #prova .betabox{ position:relative; max-width:440px; margin:0 auto; background:var(--surface); border:1px solid var(--hair); border-radius:20px; padding:24px; box-shadow:0 1px 2px rgba(31,27,23,.04),0 16px 34px rgba(31,27,23,.08); }
+  #prova .betaslot{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:center; }
+  #prova .betainput{ flex:1; min-width:180px; font-family:var(--sans); font-size:15px; color:var(--ink); background:var(--paper); border:1px solid var(--hair); border-radius:12px; padding:14px 16px; }
+  #prova .betainput::placeholder{ color:var(--ink-faint); }
+  #prova .betanote{ font-family:var(--mono); font-size:9px; letter-spacing:1.4px; text-transform:uppercase; color:var(--ink-faint); margin-top:14px; }
+
+  /* ── FOOTER ── */
+  #prova footer{ border-top:1px solid var(--hair); background:var(--paper-deep); padding:46px 0 36px; }
+  #prova .footrow{ display:flex; justify-content:space-between; align-items:flex-start; gap:30px; flex-wrap:wrap; }
+  #prova .foot-brand .brand{ font-size:22px; margin-bottom:8px; }
+  #prova .foot-tag{ font-family:var(--serif); font-style:italic; font-size:14px; color:var(--ink-mute); }
+  #prova .footlinks{ display:flex; gap:54px; flex-wrap:wrap; }
+  #prova .footcol h4{ font-family:var(--mono); font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--ink-faint); margin-bottom:14px; }
+  #prova .footcol a{ display:block; font-size:13.5px; color:var(--ink-mute); margin-bottom:9px; transition:color .2s; }
+  #prova .footcol a:hover{ color:var(--ink); }
+  #prova .footbase{ margin-top:36px; padding-top:20px; border-top:1px solid var(--hair); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-family:var(--mono); font-size:10px; letter-spacing:1px; color:var(--ink-faint); }
+
+  /* reduced motion */
+  @media(prefers-reduced-motion:reduce){
+    #prova .phone{ animation:none; }
+    #prova .rv{ opacity:1; transform:none; transition:none; }
+    #prova *{ scroll-behavior:auto; }
+  }
+</style>
+
+<div id="prova">
+
+  <nav><div class="wrap navrow">
+    <div class="brand">Prova<span class="dot">.</span></div>
+    <div class="navlinks">
+      <a href="#proof">The proof</a>
+      <a href="#how">How it works</a>
+      <a href="#doubt">Doubt Mode</a>
+      <a href="#beta" class="navcta">Join the beta</a>
+    </div>
+  </div></nav>
+
+  <!-- HERO -->
+  <header class="wrap hero">
+    <div class="heromark rv"><span>Est. proof &middot; MMXXVI</span><span class="rule"></span><span>The journal that proves you're moving</span></div>
+    <div class="herogrid">
+      <div class="herotext">
+        <h1 class="rv">Proof of who<br>you are <em>becoming.</em></h1>
+        <p class="herosub rv d1">Name a goal. Add one small proof a day. Read it back when doubt hits.</p>
+        <div class="rv d1"><span class="heroanchor">A journal built around evidence, not effort</span></div>
+        <div class="heroactions rv d2">
+          <a href="#beta" class="btn-primary">Join the beta <span class="arr">&rarr;</span></a>
+          <a href="#how" class="btn-ghost">See how it works</a>
+        </div>
+        <div class="scrollcue rv d3"><span class="ln"></span> Scroll</div>
+      </div>
+      <div class="phonewrap rv d2">
+        <div class="phoneglow"></div>
+        <div class="phone"><div class="phonescreen">
+          <div class="pgreet">Wednesday &middot; today</div>
+          <div class="phi">Still <em>becoming</em>, you.</div>
+          <div class="pcard">
+            <div class="plab">Today's proof</div>
+            <div class="pgoal">Becoming a novelist</div>
+            <div class="pprompt">Proof you're one step closer.</div>
+            <div class="padd"><span>Add proof &rarr;</span></div>
+          </div>
+          <div class="pdoubt">
+            <div class="de">When doubt hits</div>
+            <div class="dt">Read your proof <em>back</em>.</div>
+          </div>
+        </div></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- THESIS -->
+  <section class="thesis">
+    <div class="wrap">
+      <div class="lab rv">The idea</div>
+      <h2 class="rv d1">Motivation fades. <b>Evidence doesn't.</b> Prova is where you collect the small, daily proof that you're already becoming the person you said you'd be.</h2>
+    </div>
+  </section>
+
+  <!-- PROOF SHOWCASE -->
+  <section class="showcase" id="proof">
+    <div class="wrap">
+      <div class="seclabel rv">What proof looks like</div>
+      <h2 class="sectitle rv d1">Small things, <em>stacked</em>, become undeniable.</h2>
+      <div class="showgrid">
+        <div>
+          <p class="showcap rv d1">Proof isn't a grand gesture. It's the paragraph you wrote when you almost didn't. Over weeks it becomes a wall of evidence you can't argue with.</p>
+          <div class="stat rv d2"><span class="statnum">18</span><span class="statunit">days</span></div>
+          <div class="statcap rv d2">of showing up, this stretch. No streak to break.</div>
+        </div>
+        <div class="proofstack">
+          <div class="proof rv d1"><div class="pdate">Today</div><div class="ptxt">Wrote two pages at lunch. Messy, but they <em>exist</em>.</div></div>
+          <div class="proof rv d2"><div class="pdate">Yesterday</div><div class="ptxt">Showed a friend my first chapter. Didn't <em>apologize</em> for it.</div></div>
+          <div class="proof rv d3"><div class="pdate">Jun 20</div><div class="ptxt">Outlined the third act. Finally know how it <em>ends</em>.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="std wrap" id="how">
+    <div class="seclabel rv">How it works</div>
+    <h2 class="sectitle rv d1">Sixty seconds. One proof. That's the whole <em>shape</em> of it.</h2>
+    <div class="beats">
+      <div class="beat rv d1"><div class="beatnum">01</div><h3>Name a goal</h3><p>Your goal is the version of you you're becoming. Name it, and the story you're rewriting.</p></div>
+      <div class="beat rv d2"><div class="beatnum">02</div><h3>Capture the evidence</h3><p>One small proof a day that you moved toward it. Big or small, it stacks against the goal.</p></div>
+      <div class="beat rv d3"><div class="beatnum">03</div><h3>Read it back</h3><p>When doubt visits, open your own evidence. The proof is louder than the doubt.</p></div>
+    </div>
+    <p class="ritualcap rv">No streaks to break. No red marks. Missed days are room for grace.</p>
+  </section>
+
+  <!-- DOUBT -->
+  <section class="doubtsec" id="doubt">
+    <div class="doubtinner">
+      <div class="seclabel rv">Doubt Mode &middot; the signature</div>
+      <h2 class="rv d1">Don't talk yourself out of what's <em>truly happening</em>.</h2>
+      <p class="rv d2">Self-doubt is loud and convincing. Doubt Mode is one tap to your own receipts, in your own words, exactly when you need them. Doubt visits. Prova has the proof.</p>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="std wrap" id="features">
+    <div class="seclabel rv">What's inside</div>
+    <h2 class="sectitle rv d1">A quiet, finished space for the work of <em>becoming</em>.</h2>
+    <div class="fgrid">
+      <div class="fcard rv d1">
+        <div class="ficon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9h16M9 9v11"/></svg></div>
+        <h3>The Proof Wall</h3><p>Every entry stacks against your goal. Star the ones that hit hardest. Your case for yourself, growing daily.</p>
+      </div>
+      <div class="fcard clay feat rv d2">
+        <div class="ficon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg></div>
+        <h3>Reflect <span class="new">NEW</span></h3><p>Not every day is a clean win. Write or speak whatever's on your mind, and Prova finds the proof hiding inside it.</p>
+        <p class="hook">Just say it. Prova catches the proof.</p>
+      </div>
+      <div class="fcard rv d3">
+        <div class="ficon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 3h12l-1 7-5 4-5-4z"/><path d="M9 21h6"/></svg></div>
+        <h3>Doubt Mode</h3><p>The dark mode you'll actually use. One tap pulls up your evidence when self-doubt hits the loudest.</p>
+      </div>
+      <div class="fcard rv d1">
+        <div class="ficon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="3.2"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/></svg></div>
+        <h3>The Circle</h3><p>You're not doing it alone. See others quietly becoming, and cheer each other on. Anonymous, always in your corner.</p>
+      </div>
+      <div class="fcard rv d2">
+        <div class="ficon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s7-5.5 7-11a7 7 0 10-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <h3>A daily nudge</h3><p>A daily voice that sounds like yours, tuned to your goal and how you're showing up. Encouragement that's earned.</p>
+      </div>
+      <div class="fcard rv d3">
+        <div class="ficon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19h16M7 16l3-8 4 6 2-4"/></svg></div>
+        <h3>Letter to Yourself</h3><p>Past-you's voice for when doubt hits. It gets wiser the more you show up, drawing on your best proof.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING + BETA -->
+  <section class="closing" id="beta">
+    <div class="wrap">
+      <div class="lab rv">The beta is open</div>
+      <h2 class="rv d1">You are still <em>becoming</em>.</h2>
+      <p class="sub rv d1">Start collecting the proof.</p>
+
+      <div class="betabox rv d2">
+        <!-- ============================================================
+             GHL FORM EMBED  ▸  paste your GoHighLevel form / survey embed
+             code in place of EVERYTHING inside .betaslot below, so beta
+             signups land in your GHL CRM. The placeholder field + button
+             are only here so the section looks finished until you do.
+             ============================================================ -->
+        <div class="betaslot">
+          <input class="betainput" type="email" placeholder="you@email.com" aria-label="Email address">
+          <a href="#beta" class="btn-primary">Join the beta <span class="arr">&rarr;</span></a>
+        </div>
+        <div class="betanote">Joining the iOS TestFlight beta</div>
+      </div>
+
+      <div class="meta rv d2">TestFlight &middot; iOS &middot; coming to the App Store</div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer><div class="wrap">
+    <div class="footrow">
+      <div class="foot-brand">
+        <div class="brand">Prova<span class="dot" style="color:var(--sage-dark)">.</span></div>
+        <div class="foot-tag">The journal that proves you're moving.</div>
+      </div>
+      <div class="footlinks">
+        <div class="footcol"><h4>Product</h4><a href="#proof">The proof</a><a href="#how">How it works</a><a href="#doubt">Doubt Mode</a><a href="#beta">Join the beta</a></div>
+        <div class="footcol"><h4>Legal</h4><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="mailto:privacy@provajournal.com">Contact</a></div>
+      </div>
+    </div>
+    <div class="footbase"><span>&copy; MMXXVI Prova</span><span>Made for the ones quietly becoming.</span></div>
+  </div></footer>
+
+</div>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('#prova .rv');
+    if(!('IntersectionObserver' in window)){ els.forEach(function(el){ el.classList.add('in'); }); return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold:0.12, rootMargin:'0px 0px -8% 0px' });
+    els.forEach(function(el){ io.observe(el); });
+  })();
+</script>
+<!-- ===================== COPY TO HERE FOR GHL ===================== -->
+
+</body>
+</html>
